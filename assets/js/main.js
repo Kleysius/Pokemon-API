@@ -20,6 +20,12 @@ function getPokemon(name) {
                     image.src = res.sprites.front_default;
                     content.appendChild(image);
 
+                    // Créer un conteneur pour l'id
+                    let id = document.createElement('p');
+                    id.className = "idPokemon";
+                    id.innerHTML = `No. ${res.id}`;
+                    content.appendChild(id);
+
                     // Créer un conteneur pour le nom
                     let name = document.createElement('p');
                     name.innerHTML = res.name.charAt(0).toUpperCase() + res.name.slice(1);
@@ -29,8 +35,20 @@ function getPokemon(name) {
                     let type = document.createElement('p');
                     type.innerHTML = `Type : ${convertType(res.types[0].type.name)}`;
                     content.appendChild(type);
-                })
 
+                    content.addEventListener('mousemove', (e) => {
+                        const xAxis = (content.offsetWidth / 2 - e.pageX + content.offsetLeft) / 15 * 3;
+                        const yAxis = (content.offsetHeight / 2 - e.pageY + content.offsetTop) / 15 * 3;
+                        content.style.transform = "perspective(2000px) rotateY(" + xAxis + "deg) rotateX(" + yAxis + "deg)";
+                    });
+                    content.addEventListener('mouseenter', () => {
+                        content.style.transition = '0.1s';
+                    });
+                    content.addEventListener('mouseleave', () => {
+                        content.style.transform = 'rotateY(0deg) rotateX(0deg)';
+                        content.style.transition = 'all 0.5s ease';
+                    });
+                })
         })
 }
 
