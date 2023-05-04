@@ -16,11 +16,18 @@
         </div>
     </header>
     <main>
+        <h2>Afficher un Pokémon</h2>
         <div class="createPokemon">
-            <h2>Afficher un Pokémon</h2>
-            <label for="name">Nom du pokémon (En anglais) :</label>
-            <input type="text" id='name' name="name" placeholder="Entrez le nom du pokémon" required="required">
-            <input type="button" value="Valider" onclick="create()">
+            <div class="id">
+                <label for="id">Par son ID</label>
+                <input type="text" id='id' name="id" placeholder="ID du pokémon entre 1 et 898" required="required">
+                <input type="button" value="Afficher" onclick="display()">
+            </div>
+            <div class="name">
+                <label for="name">Par son nom</label>
+                <input type="text" id='name' name="name" placeholder="Entrez le nom du pokémon" required="required">
+                <input type="button" value="Afficher" onclick="create()">
+            </div>
         </div>
         <div class="display" id="container"></div>
     </main>
